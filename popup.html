@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlastWave</title>
+  <link rel="stylesheet" href="popup.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ── SIDEBAR ── -->
+    <nav id="sidebar">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="15" stroke="url(#g1)" stroke-width="2"/>
+          <path d="M8 16 L13 11 L13 14 L20 14 L20 11 L24 16 L20 21 L20 18 L13 18 L13 21 Z" fill="url(#g1)"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="32" y2="32">
+              <stop offset="0%" stop-color="#00E5A0"/>
+              <stop offset="100%" stop-color="#00B4FF"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="brand-name">BlastWave</span>
+      </div>
+
+      <ul class="nav-links">
+        <li class="nav-item active" data-tab="compose">
+          <svg viewBox="0 0 20 20"><path d="M3 5h14M3 10h9M3 15h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Compose</span>
+        </li>
+        <li class="nav-item" data-tab="contacts">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M4 17c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Contacts</span>
+        </li>
+        <li class="nav-item" data-tab="templates">
+          <svg viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Templates</span>
+        </li>
+        <li class="nav-item" data-tab="analytics">
+          <svg viewBox="0 0 20 20"><path d="M3 17 L7 11 L11 13 L15 7 L17 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="9" r="1.5" fill="currentColor"/></svg>
+          <span>Analytics</span>
+        </li>
+        <li class="nav-item" data-tab="settings">
+          <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Settings</span>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="account-chip" id="accountChip">
+          <div class="account-avatar" id="accountAvatar">?</div>
+          <span id="accountPhone">Not set</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main id="main">
+
+      <!-- COMPOSE TAB -->
+      <section class="tab-panel active" id="tab-compose">
+        <div class="panel-header">
+          <h1>New Blast</h1>
+          <p class="subheader">Send to 20–150 contacts at once</p>
+        </div>
+
+        <div class="compose-grid">
+          <!-- Left column -->
+          <div class="compose-left">
+
+            <div class="field-group">
+              <label>Channel</label>
+              <div class="channel-toggle">
+                <button class="ch-btn active" data-channel="whatsapp">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  WhatsApp
+                </button>
+                <button class="ch-btn" data-channel="sms">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  SMS
+                </button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Message</label>
+              <div class="textarea-wrap">
+                <textarea id="messageBody" placeholder="Type your message here… Use {{name}} to personalise per contact." maxlength="1000"></textarea>
+                <div class="char-count"><span id="charCount">0</span>/1000</div>
+              </div>
+              <div class="variable-chips">
+                <span class="var-chip" data-var="{{name}}">{{name}}</span>
+                <span class="var-chip" data-var="{{phone}}">{{phone}}</span>
+                <span class="var-chip" data-var="{{date}}">{{date}}</span>
+                <span class="var-chip" data-var="{{custom}}">{{custom}}</span>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Schedule <span class="badge-optional">optional</span></label>
+              <div class="schedule-row">
+                <input type="datetime-local" id="scheduleTime" class="input-field" />
+                <button class="ghost-btn" id="clearSchedule">Clear</button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Delay between messages</label>
+              <div class="delay-row">
+                <input type="range" id="delaySlider" min="2" max="30" value="5" />
+                <span id="delayVal">5s</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right column -->
+          <div class="compose-right">
+            <div class="field-group">
+              <label>Recipients <span class="count-badge" id="recipientCount">0</span></label>
+              <div class="recipient-box" id="recipientBox">
+                <div class="empty-state-mini">
+                  <svg viewBox="0 0 40 40"><circle cx="20" cy="15" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 35c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  <p>No recipients yet</p>
+                  <small>Go to Contacts tab to add</small>
+                </div>
+              </div>
+              <div class="recipient-actions">
+                <button class="ghost-btn sm" id="clearRecipients">Clear all</button>
+                <button class="ghost-btn sm" id="goToContacts">+ Add contacts</button>
+              </div>
+            </div>
+
+            <div class="limits-bar">
+              <div class="limit-item">
+                <span class="limit-label">Min</span>
+                <span class="limit-val">20</span>
+              </div>
+              <div class="limit-progress">
+                <div class="limit-fill" id="limitFill"></div>
+              </div>
+              <div class="limit-item">
+                <span class="limit-label">Max</span>
+                <span class="limit-val">150</span>
+              </div>
+            </div>
+
+            <button class="blast-btn" id="blastBtn" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              Send Blast
+            </button>
+
+            <div class="progress-card hidden" id="progressCard">
+              <div class="progress-header">
+                <span id="progressLabel">Sending…</span>
+                <span id="progressFraction">0/0</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+              <div class="progress-stats">
+                <span class="stat sent">✓ <span id="sentCount">0</span> sent</span>
+                <span class="stat failed">✗ <span id="failedCount">0</span> failed</span>
+              </div>
+              <button class="ghost-btn sm danger" id="cancelBtn">Cancel</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTS TAB -->
+      <section class="tab-panel" id="tab-contacts">
+        <div class="panel-header">
+          <h1>Contacts</h1>
+          <div class="header-actions">
+            <label class="import-btn" for="importFile">
+              <svg viewBox="0 0 20 20"><path d="M10 3v10M6 9l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Import
+              <input type="file" id="importFile" accept=".xlsx,.xls,.csv,.pdf,.txt" hidden />
+            </label>
+            <button class="primary-btn sm" id="addContactBtn">+ Add</button>
+          </div>
+        </div>
+
+        <div class="search-bar">
+          <svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l-3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input type="text" id="contactSearch" placeholder="Search contacts…" />
+        </div>
+
+        <div class="group-filter" id="groupFilter">
+          <button class="group-chip active" data-group="all">All</button>
+        </div>
+
+        <div class="contacts-list" id="contactsList">
+          <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <h3>No contacts yet</h3>
+            <p>Import an Excel, CSV, or PDF file, or add contacts manually.</p>
+          </div>
+        </div>
+
+        <!-- Add Contact Modal -->
+        <div class="modal hidden" id="addContactModal">
+          <div class="modal-overlay" id="modalOverlay"></div>
+          <div class="modal-card">
+            <div class="modal-header">
+              <h2 id="modalTitle">Add Contact</h2>
+              <button class="modal-close" id="closeModal">✕</button>
+            </div>
+            <div class="modal-body">
+              <div class="field-group">
+                <label>Name</label>
+                <input type="text" id="contactName" class="input-field" placeholder="Full name" />
+              </div>
+              <div class="field-group">
+                <label>Phone Number</label>
+                <div class="phone-input-wrap">
+                  <select id="countryCode" class="country-select">
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+233">🇬🇭 +233</option>
+                    <option value="+234">🇳🇬 +234</option>
+                    <option value="+27">🇿🇦 +27</option>
+                    <option value="+254">🇰🇪 +254</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+55">🇧🇷 +55</option>
+                    <option value="+86">🇨🇳 +86</option>
+                  </select>
+                  <input type="tel" id="contactPhone" class="input-field" placeholder="Phone number" />
+                </div>
+              </div>
+              <div class="field-group">
+                <label>Group <span class="badge-optional">optional</span></label>
+                <input type="text" id="contactGroup" class="input-field" placeholder="e.g. Customers, VIPs" />
+              </div>
+              <div class="field-group">
+                <label>Custom Value <span class="badge-optional">for {{custom}}</span></label>
+                <input type="text" id="contactCustom" class="input-field" placeholder="Any custom text" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="ghost-btn" id="cancelModal">Cancel</button>
+              <button class="primary-btn" id="saveContact">Save Contact</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEMPLATES TAB -->
+      <section class="tab-panel" id="tab-templates">
+        <div class="panel-header">
+          <h1>Templates</h1>
+          <button class="primary-btn sm" id="newTemplateBtn">+ New</button>
+        </div>
+
+        <div class="templates-grid" id="templatesGrid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Template Modal -->
+        <div class="modal hidden" id="templateModal">
+          <div class="modal-overlay" id="templateOverlay"></div>
+          <div class="modal-card">
+            <div class="modal-header">
+              <h2 id="templateModalTitle">New Template</h2>
+              <button class="modal-close" id="closeTemplateModal">✕</button>
+            </div>
+            <div class="modal-body">
+              <div class="field-group">
+                <label>Template Name</label>
+                <input type="text" id="templateName" class="input-field" placeholder="e.g. Promo Blast" />
+              </div>
+              <div class="field-group">
+                <label>Message</label>
+                <textarea id="templateBody" placeholder="Message content…" style="height:120px"></textarea>
+              </div>
+              <div class="field-group">
+                <label>Category</label>
+                <select id="templateCategory" class="input-field">
+                  <option>Promotion</option>
+                  <option>Reminder</option>
+                  <option>Announcement</option>
+                  <option>Follow-up</option>
+                  <option>Custom</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="ghost-btn" id="cancelTemplateModal">Cancel</button>
+              <button class="primary-btn" id="saveTemplate">Save Template</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS TAB -->
+      <section class="tab-panel" id="tab-analytics">
+        <div class="panel-header">
+          <h1>Analytics</h1>
+          <button class="ghost-btn sm" id="clearAnalytics">Clear history</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number" id="statTotal">0</div>
+            <div class="stat-label">Total Sent</div>
+          </div>
+          <div class="stat-card success">
+            <div class="stat-number" id="statSuccess">0</div>
+            <div class="stat-label">Successful</div>
+          </div>
+          <div class="stat-card danger">
+            <div class="stat-number" id="statFailed">0</div>
+            <div class="stat-label">Failed</div>
+          </div>
+          <div class="stat-card accent">
+            <div class="stat-number" id="statBlasts">0</div>
+            <div class="stat-label">Blasts Run</div>
+          </div>
+        </div>
+
+        <div class="history-section">
+          <h2>Blast History</h2>
+          <div class="history-list" id="historyList">
+            <div class="empty-state">
+              <div class="empty-icon">📊</div>
+              <h3>No history yet</h3>
+              <p>Your blast history will appear here.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS TAB -->
+      <section class="tab-panel" id="tab-settings">
+        <div class="panel-header">
+          <h1>Settings</h1>
+        </div>
+
+        <div class="settings-sections">
+
+          <div class="settings-group">
+            <h2>Your Account</h2>
+            <div class="field-group">
+              <label>Your Phone Number</label>
+              <div class="phone-input-wrap">
+                <select id="myCountryCode" class="country-select">
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+233" selected>🇬🇭 +233</option>
+                  <option value="+234">🇳🇬 +234</option>
+                  <option value="+27">🇿🇦 +27</option>
+                  <option value="+254">🇰🇪 +254</option>
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+55">🇧🇷 +55</option>
+                  <option value="+86">🇨🇳 +86</option>
+                </select>
+                <input type="tel" id="myPhone" class="input-field" placeholder="Your number (e.g. 244123456)" />
+              </div>
+              <p class="field-hint">Used as sender identification for SMS. For WhatsApp Web automation, ensure you're logged in at web.whatsapp.com.</p>
+            </div>
+            <button class="primary-btn" id="saveAccountBtn">Save Account</button>
+          </div>
+
+          <div class="settings-group">
+            <h2>Default Send Settings</h2>
+            <div class="field-group">
+              <label>Default delay between messages</label>
+              <div class="delay-row">
+                <input type="range" id="defaultDelay" min="2" max="30" value="5" />
+                <span id="defaultDelayVal">5s</span>
+              </div>
+            </div>
+            <div class="toggle-row">
+              <label>Enable desktop notifications</label>
+              <label class="toggle">
+                <input type="checkbox" id="notificationsToggle" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <label>Auto-randomise delay (±2s)</label>
+              <label class="toggle">
+                <input type="checkbox" id="randomDelayToggle" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <label>Stop on 5 consecutive failures</label>
+              <label class="toggle">
+                <input type="checkbox" id="failSafeToggle" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <button class="primary-btn" id="saveSettingsBtn">Save Settings</button>
+          </div>
+
+          <div class="settings-group danger-zone">
+            <h2>Danger Zone</h2>
+            <button class="danger-btn" id="resetAllBtn">Reset All Data</button>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer"></div>
+
+  <!-- SheetJS for Excel parsing -->
+  <script src="../lib/xlsx.full.min.js"></script>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
