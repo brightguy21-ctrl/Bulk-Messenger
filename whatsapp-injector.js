@@ -2,8 +2,9 @@
  * Attempt to find the message input, confirm text is pre-filled, and send.
  * @returns {boolean} true if send was attempted
  */
+let sent = false;
+
 function trySend() {
-  // More resilient selectors
   const INPUT_SELECTOR = 'div[contenteditable="true"]';
   const SEND_BTN_SELECTOR = 'button[aria-label="Send"], [data-testid="send"]';
 
@@ -15,7 +16,6 @@ function trySend() {
     return false;
   }
 
-  // WhatsApp often nests text inside spans
   const text = input.innerText?.trim() || input.textContent?.trim() || '';
   if (!text.length) {
     console.debug('Input field is empty.');
