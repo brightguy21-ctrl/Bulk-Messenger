@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+*.crx
+*.zip
+
+# Env / secrets
+.env
+*.env.local
+
+# Editor
+.vscode/
+.idea/
