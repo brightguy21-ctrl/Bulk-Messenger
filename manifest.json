@@ -1,14 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "BlastWave – Bulk WhatsApp & SMS Sender",
+  "name": "Simple WhatsApp Bulk Sender",
   "version": "1.0.0",
-  "description": "Send bulk WhatsApp and SMS messages to 20–150 contacts with smart scheduling, templates, and analytics.",
+  "description": "Send bulk messages on WhatsApp Web safely and simply (use responsibly)",
   "permissions": [
     "storage",
     "tabs",
     "scripting",
-    "notifications",
-    "alarms"
+    "notifications"
   ],
   "host_permissions": [
     "https://web.whatsapp.com/*"
@@ -41,7 +40,7 @@
   "web_accessible_resources": [
     {
       "resources": ["lib/*.js"],
-      "matches": ["<all_urls>"]
+      "matches": ["https://web.whatsapp.com/*"]
     }
   ]
 }
